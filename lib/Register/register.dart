@@ -52,7 +52,7 @@ class _RegisterPageState extends State<RegisterPage> {
               'Crea una cuenta nueva para empezar a usar la app',
               style: TextStyle(
                 color: Color.fromARGB(255, 117, 113, 113),
-                fontSize: 16,
+                fontSize: 15,
                 fontWeight: FontWeight.bold,
               ),
             ),
@@ -215,7 +215,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 ),
                 const Padding(padding: EdgeInsets.only(top: 15)),
                 Padding(
-                  padding: const EdgeInsets.only(top: 225),
+                  padding: const EdgeInsets.only(top: 140),
                   child: SizedBox(
                     height: 50,
                     width: 350,

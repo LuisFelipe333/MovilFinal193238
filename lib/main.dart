@@ -1,3 +1,4 @@
+import 'package:final193238/inside_view.dart';
 import 'package:flutter/material.dart';
 import 'package:final193238/splash/splas_view.dart';
 
@@ -29,6 +30,7 @@ class MyApp extends StatelessWidget {
         '/sesion' : (context) => const Sesion(),
         '/register': (context) => const RegisterPage(),
         '/loss_password': (context) => const LossPass(),
+        '/inside_view': (context) => const InsideView(),
       },
     );
   }

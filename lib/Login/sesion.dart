@@ -157,7 +157,7 @@ class _Sesion extends State<Sesion> {
                   ),
                 ),
                 const Padding(
-                  padding: EdgeInsets.only(top: 400),
+                  padding: EdgeInsets.only(top: 333),
                   child: Boton_Inicio(),
                 ),
                 Padding(
@@ -193,7 +193,9 @@ class Boton_Inicio extends StatelessWidget {
       height: 50,
       width: 350,
       child: OutlinedButton(
-        onPressed: () {},
+        onPressed: () {
+          Navigator.pushNamed(context, '/inside_view');
+          },
         child: const Text('Ingresar',
             style: TextStyle(
                 color: ColorsViews.whiteColor,
@@ -239,7 +241,7 @@ class Loss_password extends StatelessWidget {
           text: '¿Has olvidado tu contraseña?',
           style: const TextStyle(
               color: ColorsViews.activeSliderColor,
-              fontSize: 14,
+              fontSize: 15,
               fontWeight: FontWeight.bold),
           recognizer: TapGestureRecognizer()
             ..onTap = () {

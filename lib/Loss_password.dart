@@ -48,7 +48,7 @@ class _LossPass extends State<LossPass> {
       body: Column(
         children: <Widget>[
           const Padding(
-            padding: EdgeInsets.only(top:18.0, bottom:18.0, right: 10.0,),
+            padding: EdgeInsets.only(top:25.0, bottom:18.0, right: 10.0,),
             child: Text(
               'Ingresa tu email para restablecer tu contraseña.',
               style: TextStyle(
