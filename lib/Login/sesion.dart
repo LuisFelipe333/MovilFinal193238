@@ -1,6 +1,10 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:final193238/style/colors/colors_views.dart';
+import 'package:final193238/Login/sesion.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../bloc/auth_cubit.dart';
 
 class Sesion extends StatefulWidget {
   const Sesion({Key? key}) : super(key: key);
@@ -8,9 +12,11 @@ class Sesion extends StatefulWidget {
   @override
   State<Sesion> createState() => _Sesion();
 }
-
+final _emailController = TextEditingController();
+final _passwordController = TextEditingController();
+final _formKey = GlobalKey<FormState>();
 class _Sesion extends State<Sesion> {
-  final _formKey = GlobalKey<FormState>();
+
   bool _passwordVisible = false;
   @override
   void initState() {
@@ -78,6 +84,7 @@ class _Sesion extends State<Sesion> {
                 Padding(
                   padding: const EdgeInsets.only(left: 25.0, right: 25.0),
                   child: TextFormField(
+                    controller: _emailController,
                     decoration: InputDecoration(
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10.0),
@@ -113,6 +120,7 @@ class _Sesion extends State<Sesion> {
                 Padding(
                   padding: const EdgeInsets.only(left: 25.0, right: 25.0),
                   child: TextFormField(
+                    controller: _passwordController,
                     keyboardType: TextInputType.text,
                     obscureText:
                     !_passwordVisible, //This will obscure text dynamically
@@ -146,6 +154,12 @@ class _Sesion extends State<Sesion> {
                         },
                       ),
                     ),
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Please enter some text';
+                      }
+                      return null;
+                    },
                   ),
                 ),
                 Padding(
@@ -194,7 +208,14 @@ class Boton_Inicio extends StatelessWidget {
       width: 350,
       child: OutlinedButton(
         onPressed: () {
-          Navigator.pushNamed(context, '/inside_view');
+          if (_formKey.currentState?.validate() == true) {
+            context.read<AuthCubit>().signInWithEmailAndPassword(
+              _emailController.text,
+              _passwordController.text,
+            );
+
+          }
+
           },
         child: const Text('Ingresar',
             style: TextStyle(

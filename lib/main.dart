@@ -12,8 +12,29 @@ import 'Register/register.dart';
 
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   runApp(const MyApp());
+}
+
+class DefaultFirebaseOptions {
+  static FirebaseOptions get currentPlatform {
+
+    // SIMPLIFIED CODE
+
+    return webProduction;
+  }
+
+  static const FirebaseOptions webProduction = FirebaseOptions(
+  apiKey: 'xxx',
+  appId: 'xxx',
+  messagingSenderId: 'xxx',
+  projectId: 'xxx',
+  authDomain: 'xxx.firebaseapp.com',
+  storageBucket: 'xxx.appspot.com',
+  measurementId: 'xxx',
+  );
 }
 
 class MyApp extends StatelessWidget {

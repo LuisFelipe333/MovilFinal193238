@@ -1,6 +1,10 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:final193238/style/colors/colors_views.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:final193238/repository/auth_repository.dart';
+
+import '../bloc/auth_cubit.dart';
 class RegisterPage extends StatefulWidget {
   const RegisterPage({Key? key}) : super(key: key);
 
@@ -9,6 +13,10 @@ class RegisterPage extends StatefulWidget {
 }
 
 class _RegisterPageState extends State<RegisterPage> {
+
+  final _emailController = TextEditingController();
+  final _passwordController = TextEditingController();
+
   final _formKey = GlobalKey<FormState>();
   bool _passwordVisible = false;
   @override
@@ -115,6 +123,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 Padding(
                   padding: const EdgeInsets.only(left: 20.0, right: 15.0),
                   child: TextFormField(
+                    controller: _emailController,
                     decoration: InputDecoration(
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10.0),
@@ -152,6 +161,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 Padding(
                   padding: const EdgeInsets.only(left: 20.0, right: 15.0),
                   child: TextFormField(
+                    controller: _passwordController,
                     keyboardType: TextInputType.text,
                     obscureText:
                     !_passwordVisible, //This will obscure text dynamically
@@ -210,7 +220,7 @@ class _RegisterPageState extends State<RegisterPage> {
                         });
                       },
                     ),
-                    const Flexible(child: terminos_y_condiciones()),
+                    Flexible(child: terminos_y_condiciones()),
                   ],
                 ),
                 const Padding(padding: EdgeInsets.only(top: 15)),
@@ -220,7 +230,18 @@ class _RegisterPageState extends State<RegisterPage> {
                     height: 50,
                     width: 350,
                     child: OutlinedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        print(_emailController.text);
+                        print(_passwordController.text);
+                        if (_formKey.currentState?.validate() == true) {
+                          print("Enter in the button");
+                          context.read<AuthCubit>().createUserWithEmailAndPassword(
+                            _emailController.text,
+                            _passwordController.text,
+                          );
+                          Navigator.pushNamed(context, '/inside_view');
+                        }
+                      },
                       child: const Text('Crear cuenta',
                           style: TextStyle(
                               color: ColorsViews.whiteColor,

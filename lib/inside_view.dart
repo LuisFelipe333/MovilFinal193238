@@ -61,6 +61,23 @@ class _InsideView extends State<InsideView> {
               ),
             ),
         ),
+        bottomNavigationBar: BottomNavigationBar(
+          items: const <BottomNavigationBarItem>[
+            BottomNavigationBarItem(
+              icon: Icon(Icons.home),
+              label: 'Home',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.account_circle_rounded),
+              label: 'Account',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.shopping_cart),
+              label: 'Cart',
+            ),
+          ],
+          selectedItemColor: ColorsViews.txtHeaderColor,
+        ),
       ),
     );
     // TODO: implement build
