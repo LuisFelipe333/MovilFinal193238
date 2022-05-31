@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "632890457072",
+    "project_id": "vet-app-3bf2c",
+    "storage_bucket": "vet-app-3bf2c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:632890457072:android:b5490a26defaa4a2ee7b35",
+        "android_client_info": {
+          "package_name": "com.example.final193238"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "632890457072-umch1rfndb1k2jn33dflfahqi365kk4s.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAEbwMnFXz-yzbPpiZcCXjIi7Jf5sW4hFk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "632890457072-umch1rfndb1k2jn33dflfahqi365kk4s.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
