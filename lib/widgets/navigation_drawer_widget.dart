@@ -1,3 +1,5 @@
+import 'package:final193238/Login/Login.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:final193238/style/colors/colors_views.dart';
@@ -61,7 +63,15 @@ class NavigationDrawerWidget extends StatelessWidget{
               height: 30,
               width: 350,
               child: OutlinedButton(
-                onPressed: () {},
+                onPressed: () {
+                  FirebaseAuth.instance.signOut().then((value) {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const Login()),
+                    );
+                  });
+                },
                 child: const Text('Salir',
                     style: TextStyle(
                         color: ColorsViews.whiteColor,

@@ -1,3 +1,5 @@
+import 'package:final193238/inside_view.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:final193238/style/colors/colors_views.dart';
@@ -20,14 +22,16 @@ class _RegisterPageState extends State<RegisterPage> {
 
   final _formKey = GlobalKey<FormState>();
   bool _passwordVisible = false;
+  bool _value = false;
   @override
   void initState() {
     _passwordVisible = false;
+    _value = false;
   }
 
   @override
   Widget build(BuildContext context) {
-    bool _value = false;
+
 
     return Scaffold(
       resizeToAvoidBottomInset: false,
@@ -232,17 +236,34 @@ class _RegisterPageState extends State<RegisterPage> {
                     width: 350,
                     child: OutlinedButton(
                       onPressed: () {
-                        print(_emailController.text);
-                        print(_passwordController.text);
-                        if (_formKey.currentState?.validate() == true) {
-                          print("Enter in the button");
-                          context.read<AuthCubit>().createUserWithEmailAndPassword(
-                            _emailController.text,
-                            _passwordController.text,
-                          );
-                          //Navigator.pushNamed(context, '/inside_view');
-                        }
-                      },
+    FirebaseAuth.instance
+        .createUserWithEmailAndPassword(
+    email: _emailController.text,
+    password: _passwordController.text)
+        .then((value) {
+    print("Created New Account");
+    Navigator.push(
+    context,
+    MaterialPageRoute(
+    builder: (context) => InsideView()));
+    }).onError((error, stackTrace) {
+    ScaffoldMessenger.of(context).showSnackBar(
+    SnackBar(
+    content: Text(error.toString()),
+    duration: const Duration(seconds: 1),
+    action: SnackBarAction(
+    label: 'Dismiss',
+    onPressed: () {
+    // Hide the snackbar before its duration ends
+    ScaffoldMessenger.of(context)
+        .hideCurrentSnackBar();
+    },
+    ),
+    ),
+    );
+    });
+    },
+
                       child: const Text('Crear cuenta',
                           style: TextStyle(
                               color: ColorsViews.whiteColor,

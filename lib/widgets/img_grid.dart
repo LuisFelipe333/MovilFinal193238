@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:final193238/style/colors/colors_views.dart';
 
+import '../back_view.dart';
+
 class ImageGrid extends StatelessWidget {
   ImageGrid(this.images);
   List<String> images;
@@ -19,7 +21,10 @@ class ImageGrid extends StatelessWidget {
         scrollDirection: Axis.horizontal,
         children: List.generate(images.length, (index) {
           return GestureDetector(
-
+            onTap: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => const BackView()));
+            },
             child: Container(
               padding: const EdgeInsets.all(8),
               child: Card(

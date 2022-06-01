@@ -1,3 +1,5 @@
+import 'package:final193238/inside_view.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:final193238/style/colors/colors_views.dart';
@@ -209,13 +211,35 @@ class Boton_Inicio extends StatelessWidget {
       width: 350,
       child: OutlinedButton(
         onPressed: () {
-          if (_formKey.currentState?.validate() == true) {
-            context.read<AuthCubit>().signInWithEmailAndPassword(
-              _emailController.text,
-              _passwordController.text,
-            );
+          String email = _emailController.text;
+          String password = _passwordController.text;
 
-          }
+          FirebaseAuth.instance
+              .signInWithEmailAndPassword(
+              email: _emailController.text,
+              password: _passwordController.text)
+              .then((value) {
+            Navigator.pushAndRemoveUntil(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => const InsideView()),
+                    (r) => false);
+          }).onError((error, stackTrace) {
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(
+                content: Text(error.toString()),
+                duration: const Duration(seconds: 1),
+                action: SnackBarAction(
+                  label: 'Dismiss',
+                  onPressed: () {
+                    // Hide the snackbar before its duration ends
+                    ScaffoldMessenger.of(context)
+                        .hideCurrentSnackBar();
+                  },
+                ),
+              ),
+            );
+          });
           },
         child: const Text('Ingresar',
             style: TextStyle(
