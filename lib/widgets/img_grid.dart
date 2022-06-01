@@ -11,7 +11,7 @@ class ImageGrid extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 250, // Para una sola fila poner en 345 y 500 para 2 filas
+      height: 300, // Para una sola fila poner en 345 y 500 para 2 filas
       child: GridView.count(
         primary: false,
         padding: const EdgeInsets.all(5),
@@ -36,6 +36,13 @@ class ImageGrid extends StatelessWidget {
                       images[index],
                       height:
                       200, // Para una sola fila poner en 200 y 115 para 2 filas
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(16.0),
+                      child: Text(
+                        'Comida para perro.',
+                        style: TextStyle(color: Colors.black),
+                      ),
                     ),
                   ],
                 ),
