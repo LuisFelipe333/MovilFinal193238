@@ -6,6 +6,7 @@ import 'package:final193238/repository/auth_repository.dart';
 
 import '../bloc/auth_cubit.dart';
 class RegisterPage extends StatefulWidget {
+  static Widget create(BuildContext context) => RegisterPage();
   const RegisterPage({Key? key}) : super(key: key);
 
   @override
@@ -66,8 +67,8 @@ class _RegisterPageState extends State<RegisterPage> {
             ),
           ),
           Form(
+            key: _formKey,
             child: Column(
-              key: _formKey,
               children: <Widget>[
                 const Padding(
                   padding: EdgeInsets.only(
@@ -239,7 +240,7 @@ class _RegisterPageState extends State<RegisterPage> {
                             _emailController.text,
                             _passwordController.text,
                           );
-                          Navigator.pushNamed(context, '/inside_view');
+                          //Navigator.pushNamed(context, '/inside_view');
                         }
                       },
                       child: const Text('Crear cuenta',

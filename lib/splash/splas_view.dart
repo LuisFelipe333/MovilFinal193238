@@ -6,6 +6,7 @@ import 'dart:ui' as ui;
 import '../pages/on_boarding.dart';
 
 class SplashView extends StatefulWidget {
+  static Widget create(BuildContext context) => SplashView();
   const SplashView({Key? key}) : super(key: key);
 
   @override

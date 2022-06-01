@@ -7,6 +7,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../bloc/auth_cubit.dart';
 
 class Sesion extends StatefulWidget {
+  static Widget create(BuildContext context) => Sesion();
   const Sesion({Key? key}) : super(key: key);
 
   @override
@@ -63,8 +64,8 @@ class _Sesion extends State<Sesion> {
             ),
           ),
           Form(
+            key: _formKey,
             child: Column(
-              key: _formKey,
               children: <Widget>[
                 const Padding(
                   padding: EdgeInsets.only(
@@ -215,7 +216,6 @@ class Boton_Inicio extends StatelessWidget {
             );
 
           }
-
           },
         child: const Text('Ingresar',
             style: TextStyle(

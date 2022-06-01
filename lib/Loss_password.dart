@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:final193238/style/colors/colors_views.dart';
 
 class LossPass extends StatefulWidget {
+  static Widget create(BuildContext context) => LossPass();
   const LossPass({Key? key}) : super(key: key);
 
   @override
