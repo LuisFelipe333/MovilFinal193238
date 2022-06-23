@@ -7,6 +7,7 @@ import 'package:final193238/Login/sesion.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../bloc/auth_cubit.dart';
+import '../pages/store/store_view.dart';
 
 class Sesion extends StatefulWidget {
   static Widget create(BuildContext context) => Sesion();
@@ -222,7 +223,7 @@ class Boton_Inicio extends StatelessWidget {
             Navigator.pushAndRemoveUntil(
                 context,
                 MaterialPageRoute(
-                    builder: (context) => const InsideView()),
+                    builder: (context) => const StoreView()),
                     (r) => false);
           }).onError((error, stackTrace) {
             ScaffoldMessenger.of(context).showSnackBar(
